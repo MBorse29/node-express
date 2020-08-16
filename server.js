@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+
+const fs = require("fs");
+const path = require("path");
+
 app.listen(3000, () => console.log("Listening on port 3000..."));
 
 app.get("/", (req, res) => {
@@ -8,10 +12,5 @@ app.get("/", (req, res) => {
 });
 
 app.get("/modals", (req, res) => {
-  console.log("Modals route");
-  res.send({
-    name: "marvel",
-    img:
-      "https://dl.dropboxusercontent.com/u/19954023/marvel_force_chart_img/marvel.png",
-  });
+  res.sendFile("./data/marvel.json", { root: __dirname });
 });
